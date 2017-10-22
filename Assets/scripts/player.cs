@@ -11,13 +11,16 @@ public class player : MonoBehaviour {
 	static public float velocidade;
 	static public bool offsetMap;
 	static public float cameraPos;
-	private float bounce;
-
+	private int bounce;
+	private int debounce;
+	private int aerodynamics;
 	// Use this for initialization
 	void Start () {
 		//velocidade = 100f;
 		offsetMap = false; 
-		bounce = 40;
+		bounce = PlayerPrefs.GetInt("bounce");
+		debounce = PlayerPrefs.GetInt("debounce");
+		aerodynamics = PlayerPrefs.GetInt("aerodynamics");
 		playerRB = GetComponent<Rigidbody2D>();
 		//playerSR = GetComponent<SpriteRenderer>();
 		playerRB.AddForce(new Vector2(velocidade*20,velocidade*20),ForceMode2D.Force); 
@@ -46,11 +49,13 @@ public class player : MonoBehaviour {
 
 
 		//resistencia do ar
-		player.velocidade -= 0.01f;
+		float resistencia = 1.0f/aerodynamics*1.0f;
+		player.velocidade -= resistencia;
 
 		//volta para o menu
 		if (player.velocidade <= 10) {
 			player.velocidade = 0;
+			PlayerPrefs.SetInt ("gold",10);
 			SceneManager.LoadScene ("launch", LoadSceneMode.Single);
 		}
 
@@ -58,9 +63,11 @@ public class player : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D colisao) {
 		if (colisao.gameObject.tag == "floor") {
-			playerRB.AddForce(new Vector2(0,(velocidade/3)*bounce),ForceMode2D.Force); 
+			playerRB.AddForce(new Vector2(0,bounce),ForceMode2D.Force);
+
 			playerRB.AddTorque (velocidade*-3);
-			player.velocidade -= 1f;
+			bounce -= debounce;
+			player.velocidade -= debounce/10;
 
 		}
 	}
