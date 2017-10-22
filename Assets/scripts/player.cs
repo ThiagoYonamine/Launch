@@ -70,5 +70,11 @@ public class player : MonoBehaviour {
 			player.velocidade -= debounce/10;
 
 		}
+
+		if (colisao.gameObject.tag == "coin") {
+			Destroy (colisao.gameObject);
+		}
 	}
+
+	
 }
