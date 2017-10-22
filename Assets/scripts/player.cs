@@ -14,6 +14,8 @@ public class player : MonoBehaviour {
 	private int bounce;
 	private int debounce;
 	private int aerodynamics;
+	private int gold;
+	private int valueCoin;
 	// Use this for initialization
 	void Start () {
 		//velocidade = 100f;
@@ -21,6 +23,8 @@ public class player : MonoBehaviour {
 		bounce = PlayerPrefs.GetInt("bounce");
 		debounce = PlayerPrefs.GetInt("debounce");
 		aerodynamics = PlayerPrefs.GetInt("aerodynamics");
+		gold = PlayerPrefs.GetInt("gold");
+		valueCoin = PlayerPrefs.GetInt("valueCoin");
 		playerRB = GetComponent<Rigidbody2D>();
 		//playerSR = GetComponent<SpriteRenderer>();
 		playerRB.AddForce(new Vector2(velocidade*20,velocidade*20),ForceMode2D.Force); 
@@ -55,7 +59,7 @@ public class player : MonoBehaviour {
 		//volta para o menu
 		if (player.velocidade <= 10) {
 			player.velocidade = 0;
-			PlayerPrefs.SetInt ("gold",10);
+			PlayerPrefs.SetInt ("gold",gold);
 			SceneManager.LoadScene ("launch", LoadSceneMode.Single);
 		}
 
@@ -72,6 +76,7 @@ public class player : MonoBehaviour {
 		}
 
 		if (colisao.gameObject.tag == "coin") {
+			gold += valueCoin;
 			Destroy (colisao.gameObject);
 		}
 	}

@@ -11,13 +11,17 @@ public class gerador : MonoBehaviour {
 	}
 	void FixedUpdate () {
 		count++;
-		if (count == 50) {
+		if (count == 20) {
 			Rigidbody2D instance;
 			instance = Instantiate (rigidBodyPrefab) as Rigidbody2D;
 			Vector2 positionRespaw = instance.position;
-			positionRespaw.y = player.cameraPos;
+			float variancia = Random.Range(-5,5);
+			float posY = player.cameraPos + variancia;
+			if (posY < 0)
+				posY = 0;
+			positionRespaw.y = posY;
 			instance.position = positionRespaw;
-			instance.AddForce (new Vector3 (-player.velocidade*5, 0, 0));
+			instance.AddForce (new Vector3 (-30 -(player.velocidade*5), 0, 0));
 
 			count = 0;
 		}
