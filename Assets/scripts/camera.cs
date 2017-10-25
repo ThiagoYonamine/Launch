@@ -15,8 +15,8 @@ public class camera : MonoBehaviour {
 		y = player.cameraPos;
 		y /= 1.1f;
 
-		if (y < 0)
-			y = 0;
+		if (y < -1.25)
+			y = -1.25f;
 		transform.position = new Vector3 (0,y,-10);
 	}
 }

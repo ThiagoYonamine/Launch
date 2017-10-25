@@ -16,9 +16,9 @@ public class cenario : MonoBehaviour {
 
 	// Update is called once per frame
 	void FixedUpdate () {
-		if (player.offsetMap) {
+		//if (player.offsetMap) {
 			offset += (player.velocidade / distancia);
 			materialAtual.SetTextureOffset ("_MainTex", new Vector2 (offset, 0));
-		}
+		//}
 	}
 }

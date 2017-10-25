@@ -22,7 +22,7 @@ public class init : MonoBehaviour {
 			PlayerPrefs.SetInt ("debounce", 20);
 			PlayerPrefs.SetInt ("aerodynamics", 100);
 			PlayerPrefs.SetInt ("valueCoin", 1);
-			PlayerPrefs.SetFloat ("power", 1);
+			PlayerPrefs.SetFloat ("power", 2);
 			PlayerPrefs.SetInt ("powerLaunch", 10);
 
 			print ("first");

@@ -18,7 +18,7 @@ public class launch : MonoBehaviour {
 
 	public void launchJogo(){
 		
-		player.velocidade = powerLaunch+(click*power);
+		player.velocidade = 40+powerLaunch+(click*power);
 		print (player.velocidade);
 		SceneManager.LoadScene ("jogo", LoadSceneMode.Single);
 	}
