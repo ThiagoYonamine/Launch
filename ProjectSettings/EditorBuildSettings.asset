@@ -11,3 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/scenes/jogo.unity
     guid: 6fabe6c334123a34e8c4f1c5d0aba3cc
+  - enabled: 1
+    path: Assets/scenes/upgrade.unity
+    guid: 00000000000000000000000000000000

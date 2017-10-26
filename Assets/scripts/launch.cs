@@ -7,7 +7,7 @@ public class launch : MonoBehaviour {
 	private float click;
 	private int timer;
 	private bool start;
-	private float power;
+	private int power;
 	private int powerLaunch;
 
 	public void count(){
@@ -15,10 +15,19 @@ public class launch : MonoBehaviour {
 		click += 1;
 
 	}
+	public void moveIntro(){
+
+		SceneManager.LoadScene ("launch", LoadSceneMode.Single);
+	}
+
+	public void moveUpgrade(){
+
+		SceneManager.LoadScene ("upgrade", LoadSceneMode.Single);
+	}
 
 	public void launchJogo(){
 		
-		player.velocidade = 40+powerLaunch+(click*power);
+		player.velocidade = powerLaunch+(click*power);
 		print (player.velocidade);
 		SceneManager.LoadScene ("jogo", LoadSceneMode.Single);
 	}
@@ -27,7 +36,7 @@ public class launch : MonoBehaviour {
 	void Start(){
 		timer = 0;
 		click = 0;
-		power = PlayerPrefs.GetFloat ("power");
+		power = PlayerPrefs.GetInt ("power");
 		powerLaunch = PlayerPrefs.GetInt ("powerLaunch");
 		start = false;
 	

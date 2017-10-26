@@ -22,14 +22,14 @@ public class player : MonoBehaviour {
 		//velocidade = 100f;
 		offsetMap = false; 
 		bounce = PlayerPrefs.GetInt("bounce");
-		debounce = PlayerPrefs.GetInt("debounce");
+		debounce = 20;
 		aerodynamics = PlayerPrefs.GetInt("aerodynamics");
 		gold = PlayerPrefs.GetInt("gold");
-		valueCoin = PlayerPrefs.GetInt("valueCoin");
+		valueCoin = PlayerPrefs.GetInt("coin");
 		playerRB = GetComponent<Rigidbody2D>();
 		//playerSR = GetComponent<SpriteRenderer>();
 		playerRB.AddForce(new Vector2(velocidade*20,velocidade*20),ForceMode2D.Force); 
-		playerRB.AddTorque (velocidade*-1);
+		playerRB.AddTorque (velocidade*-10);
 
 	}
 
@@ -83,7 +83,6 @@ public class player : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D colisao) {
 		if (colisao.gameObject.tag == "floor") {
 			playerRB.AddForce(new Vector2(0,10+bounce),ForceMode2D.Force);
-			playerRB.AddTorque (velocidade*-0.5f);
 			bounce -= debounce;
 
 		}

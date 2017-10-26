@@ -6,8 +6,11 @@ public class UI : MonoBehaviour {
 	public Text txtGold;
 	// Use this for initialization
 	void Start () {
-		txtGold.text = "Gold: " + PlayerPrefs.GetInt("gold").ToString();
+		txtGold.text = PlayerPrefs.GetInt("gold").ToString();
 	}
-	
+
+	void FixedUpdate(){
+		txtGold.text = PlayerPrefs.GetInt("gold").ToString();
+	}
 
 }
